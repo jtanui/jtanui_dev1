@@ -18,11 +18,9 @@ var app = new Vue({
         
         this.getStoredData();
         
-
     },methods: {
 
         //Methods Implementated
-
         getAPIData: function() {
             //Count the received data and store on localstorage for Application logic 
             $.getJSON("https://api.worldbank.org/v2/countries/all/indicators/SP.POP.TOTL?format=json", function(data) {
@@ -56,15 +54,9 @@ var app = new Vue({
             }).catch(function(error) {
                 console.log(error);
             });
-
-
-
-
+            
         },updatestoredPopulation: function() {
               //Receive Json API data and update to database
-              
-              
-
               $.getJSON("https://api.worldbank.org/v2/countries/all/indicators/SP.POP.TOTL?format=json", function(data) {
                 
                 for (count = 0; count < data[1].length; count++) {
@@ -85,14 +77,11 @@ var app = new Vue({
                         }
                     }).then(response => {
 
+                        console.log(response)
                         
-                        
-
                     }).catch(function(error) {
                         console.log(error);
                     });
-
-                    
                 }
             });
 
@@ -146,7 +135,7 @@ $(document).ready(function() {
 
     $.getJSON("http://41.215.35.52/geo_me/population/api/index.php/data/get_population_within_each_year", function(data) {
         $.each(data, function(key, value) {
-            // console.log(value['year']);
+            //Push Year and Population values to Highchart 
             year.push(value['year']);
             population.push(parseInt(value['population']));
         });
@@ -182,8 +171,5 @@ $(document).ready(function() {
                 data: population
             }]
         });
-
-
     });
-
 });
