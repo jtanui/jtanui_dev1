@@ -44,6 +44,12 @@ Example
 $config['base_url'] = 'http//41.215.********/geo_me/population/api/index.php'; (It can be the server public facing IP or DNS)
 
 
+PHP API controller
+api\application\controllers
+
+PHP API Model
+api\application\models
+
 Attached is the SQL file document run the file on a MYSQL Database
 
 Language used: PHP Codeigniter Framework for API Application Logics, VueJS Javascript Framework, Axios : promise based HTTP client for the browser, HTML5,CSS framework with Sass Template, 
