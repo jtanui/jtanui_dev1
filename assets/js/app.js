@@ -1,5 +1,4 @@
 //VueJS Framework
-
 var app = new Vue({
     el: '#app',
     data: {
@@ -8,26 +7,25 @@ var app = new Vue({
     },
     created: function() {
         //Initiate api load on page load and update database frequently
-        this.updateProgress = "Updating data.....";   
+        this.updateProgress = "Updating data.....";
         this.fetchData = setInterval(function() {
-            
+
             this.getAPIData();
             this.getStoredPopulationData();
-       
-        }.bind(this), 60000);
-        
-        this.getStoredData();
-        
-    },methods: {
 
+        }.bind(this), 60000);
+
+        this.getStoredData();
+    },
+    methods: {
         //Methods Implementated
         getAPIData: function() {
             //Count the received data and store on localstorage for Application logic 
             $.getJSON("https://api.worldbank.org/v2/countries/all/indicators/SP.POP.TOTL?format=json", function(data) {
                 window.localStorage.setItem('TotalPopulation', data[1].length);
             });
-
-        },getStoredData: function() {
+        },
+        getStoredData: function() {
             //Get world bank data from Json API 
             axios.get('http://41.215.35.52/geo_me/population/api/index.php/data/get_stored_data', {}).then(response => {
 
@@ -47,20 +45,24 @@ var app = new Vue({
                 //Application Logic to compare data from the database and API receiver and insert if no data on database else update data by year
                 if (response.data.length <= 0 || apiStoredCount > response.data.length) {
                     this.storePopulation();
-                }  else {
+                } else {
                     this.updatestoredPopulation();
                 }
 
             }).catch(function(error) {
                 console.log(error);
             });
-            
-        },updatestoredPopulation: function() {
-              //Receive Json API data and update to database
-              $.getJSON("https://api.worldbank.org/v2/countries/all/indicators/SP.POP.TOTL?format=json", function(data) {
-                
+
+        },
+        updatestoredPopulation: function() {
+            //Receive Json API data and update to database
+
+
+
+            $.getJSON("https://api.worldbank.org/v2/countries/all/indicators/SP.POP.TOTL?format=json", function(data) {
+
                 for (count = 0; count < data[1].length; count++) {
-                   
+
                     var country = data[1][count]['country'].value;
                     var date = data[1][count]['date'];
                     var value = data[1][count]['value'];
@@ -77,17 +79,21 @@ var app = new Vue({
                         }
                     }).then(response => {
 
-                        console.log(response)
-                        
+
+
+
                     }).catch(function(error) {
                         console.log(error);
                     });
+
+
                 }
             });
 
-            this.updateProgress = "Data updated....."; 
+            this.updateProgress = "Data updated.....";
 
-        },storePopulation: function() {
+        },
+        storePopulation: function() {
 
             //Receive Json API data
 
@@ -96,7 +102,7 @@ var app = new Vue({
                 console.log(data[1].length)
 
                 for (count = 0; count < data[1].length; count++) {
-                   
+
                     var country = data[1][count]['country'].value;
                     var date = data[1][count]['date'];
                     var value = data[1][count]['value'];
@@ -135,7 +141,7 @@ $(document).ready(function() {
 
     $.getJSON("http://41.215.35.52/geo_me/population/api/index.php/data/get_population_within_each_year", function(data) {
         $.each(data, function(key, value) {
-            //Push Year and Population values to Highchart 
+            // console.log(value['year']);
             year.push(value['year']);
             population.push(parseInt(value['population']));
         });
@@ -171,5 +177,8 @@ $(document).ready(function() {
                 data: population
             }]
         });
+
+
     });
+
 });
