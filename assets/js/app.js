@@ -6,7 +6,7 @@ var app = new Vue({
         updateProgress: ''
     },
     created: function() {
-        //Initiate api load on page load and update database frequently
+        //Initiate api load on page load and update database frequently interval of 1 minute.
         this.updateProgress = "Updating data.....";
         this.fetchData = setInterval(function() {
 
@@ -93,8 +93,6 @@ var app = new Vue({
             //Receive Json API data
             $.getJSON("https://api.worldbank.org/v2/countries/all/indicators/SP.POP.TOTL?format=json", function(data) {
 
-                console.log(data[1].length)
-
                 for (count = 0; count < data[1].length; count++) {
 
                     var country = data[1][count]['country'].value;
@@ -102,8 +100,7 @@ var app = new Vue({
                     var value = data[1][count]['value'];
                     var countJsonData = data[1].length;
 
-
-                    //Store consumed json array to Mysql Database
+                    //Store consumed json array to Mysql Database Asynchronously
 
                     axios.get('http://41.215.35.52/geo_me/population/api/index.php/data/StorePopulatonJson', {
                         params: {
