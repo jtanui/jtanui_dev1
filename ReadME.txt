@@ -1,8 +1,8 @@
 Introduction
 
 The application consumes data from https://api.worldbank.org/v2/countries/all/indicators/SP.POP.TOTL?format=json
-The fetched data is inserted on the database and updated in intervals of 5 seconds
-The inserted and updated data is consumed by the application
+The fetched data is dumped on the database and updated in intervals of 60 seconds
+The dumped and updated data is consumed by the application through a Rest Application Programming Interface.
 The User Interface displays data on a line graph showing the trends in population within the Arab World
 
 Instruction
