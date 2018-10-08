@@ -50,6 +50,9 @@ Language used: PHP Codeigniter Framework for API Application Logics, VueJS Javas
 Storage Used: MYSQL Database and Localstorage
 API:  https://api.worldbank.org/v2/countries/all/indicators/SP.POP.TOTL?format=json 
 
+Javascript Logics and methods can be found in assets/js/app.js
+
+
 
 The live application can be found within this URL
 http://41.215.35.52/geo_me/population/
