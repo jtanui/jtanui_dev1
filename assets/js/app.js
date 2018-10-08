@@ -56,9 +56,6 @@ var app = new Vue({
         },
         updatestoredPopulation: function() {
             //Receive Json API data and update to database
-
-
-
             $.getJSON("https://api.worldbank.org/v2/countries/all/indicators/SP.POP.TOTL?format=json", function(data) {
 
                 for (count = 0; count < data[1].length; count++) {
@@ -85,8 +82,6 @@ var app = new Vue({
                     }).catch(function(error) {
                         console.log(error);
                     });
-
-
                 }
             });
 
@@ -96,7 +91,6 @@ var app = new Vue({
         storePopulation: function() {
 
             //Receive Json API data
-
             $.getJSON("https://api.worldbank.org/v2/countries/all/indicators/SP.POP.TOTL?format=json", function(data) {
 
                 console.log(data[1].length)
