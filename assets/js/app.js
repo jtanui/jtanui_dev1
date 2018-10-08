@@ -87,7 +87,7 @@ var app = new Vue({
         },
         storePopulation: function() {
 
-            //Receive Json API data
+            //Receive World Bank Json API data
             $.getJSON("https://api.worldbank.org/v2/countries/all/indicators/SP.POP.TOTL?format=json", function(data) {
 
                 for (count = 0; count < data[1].length; count++) {
@@ -129,9 +129,11 @@ $(document).ready(function() {
 
     $.getJSON("http://41.215.35.52/geo_me/population/api/index.php/data/get_population_within_each_year", function(data) {
         $.each(data, function(key, value) {
-            // console.log(value['year']);
+       
             year.push(value['year']);
             population.push(parseInt(value['population']));
+            
+            
         });
 
         Highcharts.chart('container', {
