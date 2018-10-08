@@ -75,10 +75,7 @@ var app = new Vue({
                             JsonCount: countJsonData
                         }
                     }).then(response => {
-
-
-
-
+                        this.updateProgress = "Data updated.....";
                     }).catch(function(error) {
                         console.log(error);
                     });
