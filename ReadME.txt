@@ -46,7 +46,7 @@ $config['base_url'] = 'http//41.215.********/geo_me/population/api/index.php'; (
 
 Attached is the SQL file document run the file on a MYSQL Database
 
-Language used: PHP Codeigniter Framework for API Application Logics, VueJS Javascript Framework, HTML5,CSS framework with Sass Template 
+Language used: PHP Codeigniter Framework for API Application Logics, VueJS Javascript Framework, HTML5,CSS framework with Sass Template, Axios : promise based HTTP client for the browser 
 Storage Used: MYSQL Database and Localstorage
 API:  https://api.worldbank.org/v2/countries/all/indicators/SP.POP.TOTL?format=json 
 
