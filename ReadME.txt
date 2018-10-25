@@ -16,7 +16,7 @@ Navigate to \Database File Folder it contains the SQL file
 Example
 
 $db['default'] = array(
-    'dsn' => 'mysql:host=192.168.********; dbname= p*****',
+    'dsn' => 'mysql:host=192.122..********; dbname= p*****',
     'hostname' => '192.168.******',
     'username' => 'root',
     'password' => '******',
@@ -41,7 +41,7 @@ Configure the access URL to the API transactions on a file called config.php
 
 Example
 
-$config['base_url'] = 'http//41.215.********/geo_me/population/api/index.php'; (It can be the server public facing IP or DNS)
+$config['base_url'] = 'http//41.2***********/geo_me/population/api/index.php'; (It can be the server public facing IP or DNS)
 
 
 PHP API controller
